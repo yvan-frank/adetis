@@ -238,6 +238,7 @@ body.nav-open {
 }
 
 .hero--media {
+    background-image: linear-gradient(90deg, rgba(7, 28, 58, .96) 0%, rgba(7, 28, 58, .9) 35%, rgba(7, 28, 58, .55) 60%, rgba(7, 28, 58, 0) 85%), var(--hero-img);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -1161,6 +1162,11 @@ section.alt {
 }
 
 @media (max-width: 760px) {
+    .hero--media {
+        background-image: linear-gradient(180deg, rgba(7, 28, 58, .82), rgba(7, 28, 58, .92) 45%, rgba(7, 28, 58, .97)), var(--hero-img);
+        background-position: center;
+    }
+
     .nav-toggle {
         display: flex;
     }

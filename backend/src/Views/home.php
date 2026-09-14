@@ -1,4 +1,4 @@
-<section class="hero hero--media" style="background-image: linear-gradient(90deg, rgba(7,28,58,.96) 0%, rgba(7,28,58,.9) 35%, rgba(7,28,58,.55) 60%, rgba(7,28,58,0) 85%), url('/assets/img/hero-industry.jpg')">
+<section class="hero hero--media" style="--hero-img: url('/assets/img/hero-industry.jpg')">
     <div class="container">
         <span class="hero__eyebrow">Ingénierie · Industrie · Innovation</span>
         <h1>L'ingénierie qui fait avancer l'industrialisation de l'Afrique Centrale</h1>
