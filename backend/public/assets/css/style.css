@@ -23,6 +23,11 @@
     box-sizing: border-box;
 }
 
+::selection {
+    background: var(--color-red);
+    color: var(--color-white);
+}
+
 html {
     scroll-behavior: smooth;
 }
