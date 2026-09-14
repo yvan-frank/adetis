@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Core\Controller;
 use App\Core\Request;
+use App\Core\Seo;
 
 class ImmigrationFeatureController extends Controller
 {
@@ -21,12 +22,38 @@ class ImmigrationFeatureController extends Controller
         $feature = $features[$slug];
         $others = array_filter($features, fn (array $f) => $f['slug'] !== $slug);
 
+        $jsonLd = [
+            Seo::breadcrumbJsonLd([
+                ['name' => 'Accueil', 'path' => '/'],
+                ['name' => "Nos pôles d'expertise", 'path' => '/poles-expertise'],
+                ['name' => 'Immigration & Études en France', 'path' => '/poles-expertise/immigration-etudes-france'],
+                ['name' => $feature['title']],
+            ]),
+        ];
+
+        if (!empty($feature['faq'])) {
+            $jsonLd[] = [
+                '@context' => 'https://schema.org',
+                '@type' => 'FAQPage',
+                'mainEntity' => array_map(static fn (array $item) => [
+                    '@type' => 'Question',
+                    'name' => $item['q'],
+                    'acceptedAnswer' => [
+                        '@type' => 'Answer',
+                        'text' => $item['a'],
+                    ],
+                ], $feature['faq']),
+            ];
+        }
+
         $this->view('immigration-feature-detail', [
             'pageTitle' => $feature['title'] . ' — ADETIS Engineering',
             'pageDescription' => $feature['metaDescription'],
             'activeNav' => 'services',
             'feature' => $feature,
             'others' => array_values($others),
+            'ogImage' => '/assets/img/poles/immigration-etudes-france.jpg',
+            'jsonLd' => $jsonLd,
         ]);
     }
 

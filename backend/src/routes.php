@@ -7,8 +7,12 @@ use App\Controllers\ImmigrationFeatureController;
 use App\Controllers\ImmigrationRequestController;
 use App\Controllers\PageController;
 use App\Controllers\PoleController;
+use App\Controllers\SeoController;
 
 /** @var App\Core\Router $router */
+
+$router->get('/robots.txt', [SeoController::class, 'robots']);
+$router->get('/sitemap.xml', [SeoController::class, 'sitemap']);
 
 $router->get('/', [HomeController::class, 'index']);
 $router->get('/a-propos', [PageController::class, 'about']);

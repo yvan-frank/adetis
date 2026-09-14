@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Core\Controller;
 use App\Core\Request;
+use App\Core\Seo;
 use App\Core\Validator;
 use App\Models\ImmigrationRequest;
 
@@ -141,6 +142,15 @@ class ImmigrationRequestController extends Controller
             'targetLevels' => self::TARGET_LEVELS,
             'intakes' => self::INTAKES,
             'stages' => self::STAGES,
+            'ogImage' => '/assets/img/poles/immigration-etudes-france.jpg',
+            'jsonLd' => [
+                Seo::breadcrumbJsonLd([
+                    ['name' => 'Accueil', 'path' => '/'],
+                    ['name' => "Nos pôles d'expertise", 'path' => '/poles-expertise'],
+                    ['name' => 'Immigration & Études en France', 'path' => '/poles-expertise/immigration-etudes-france'],
+                    ['name' => 'Candidater'],
+                ]),
+            ],
         ], $extra);
     }
 }

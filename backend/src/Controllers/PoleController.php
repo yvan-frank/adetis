@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Core\Controller;
 use App\Core\Request;
+use App\Core\Seo;
 
 class PoleController extends Controller
 {
@@ -27,6 +28,27 @@ class PoleController extends Controller
             'activeNav' => 'services',
             'pole' => $pole,
             'others' => array_values($others),
+            'ogImage' => $pole['image'],
+            'jsonLd' => [
+                Seo::breadcrumbJsonLd([
+                    ['name' => 'Accueil', 'path' => '/'],
+                    ['name' => "Nos pôles d'expertise", 'path' => '/poles-expertise'],
+                    ['name' => $pole['shortTitle']],
+                ]),
+                [
+                    '@context' => 'https://schema.org',
+                    '@type' => 'Service',
+                    'name' => $pole['title'],
+                    'description' => $pole['metaDescription'],
+                    'url' => Seo::absoluteUrl('/poles-expertise/' . $pole['slug']),
+                    'provider' => [
+                        '@type' => 'Organization',
+                        'name' => 'ADETIS Engineering',
+                        'url' => Seo::baseUrl() . '/',
+                    ],
+                    'areaServed' => ['Cameroun', 'CEMAC', 'France'],
+                ],
+            ],
         ]);
     }
 

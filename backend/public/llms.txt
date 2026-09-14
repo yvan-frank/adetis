@@ -1,0 +1,24 @@
+# ADETIS Engineering
+
+> ADETIS (Applications des Développements des Techniques d'Ingénierie et Services Associés) est un cabinet d'ingénierie basé à Douala (Cameroun), avec une filiale à Paris (France). Il intervient en Afrique Centrale (zone CEMAC) et en Europe.
+
+ADETIS Engineering propose cinq pôles d'expertise complémentaires : bureau d'études CAO/DAO, recherche appliquée et production mécanique, achat/vente/location d'équipements industriels (Boostmarket), formation continue, et accompagnement à la mobilité étudiante vers la France (procédure Campus France).
+
+## Pages principales
+
+- [Accueil](https://www.adetis-engineering.com/) : présentation générale de l'entreprise et de ses cinq pôles.
+- [À propos](https://www.adetis-engineering.com/a-propos) : vision, implantations (Douala & Paris) et équipe dirigeante.
+- [Nos pôles d'expertise](https://www.adetis-engineering.com/poles-expertise) : liste des cinq pôles d'activité.
+- [Bureau d'Études & Méthodes](https://www.adetis-engineering.com/poles-expertise/bureau-etudes-methodes) : conception et modélisation CAO/DAO 2D/3D (mécanique, automatisation, énergétique, génie civil, chaudronnerie).
+- [Recherche Appliquée](https://www.adetis-engineering.com/poles-expertise/recherche-appliquee) : laboratoire et centre de production mécanique.
+- [Boostmarket](https://www.adetis-engineering.com/poles-expertise/boostmarket) : achat, vente et location de machines industrielles.
+- [Formation & Conférences](https://www.adetis-engineering.com/poles-expertise/formation-conferences) : formations continues et spécialisées en petits groupes.
+- [Immigration & Études en France](https://www.adetis-engineering.com/poles-expertise/immigration-etudes-france) : accompagnement complet de la procédure Campus France (orientation, dossier, entretien, visa étudiant, installation, suivi post-admission).
+- [Partenaires & Marchés](https://www.adetis-engineering.com/partenaires) : zones d'intervention et typologie de partenaires.
+- [Engagement social](https://www.adetis-engineering.com/engagement-social) : formation et réinsertion professionnelle de la jeunesse.
+- [Contact](https://www.adetis-engineering.com/contact) : coordonnées du siège de Douala et de la filiale de Paris.
+
+## Contact
+
+- Siège social : BP 12067, Douala, Cameroun — +237 620 22 48 11 — directeur.general@adetis-engineering.com
+- Filiale France : 3 rue de Tourtille, 75020 Paris — +33 6 17 92 12 19 — dtakendo@yahoo.fr

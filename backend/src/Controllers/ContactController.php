@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Core\Controller;
 use App\Core\Request;
+use App\Core\Seo;
 use App\Core\Validator;
 use App\Models\ContactMessage;
 
@@ -19,15 +20,11 @@ class ContactController extends Controller
 
     public function index(Request $request): void
     {
-        $this->view('contact', [
-            'pageTitle' => 'Contact — ADETIS Engineering',
-            'pageDescription' => 'Contactez ADETIS Engineering : siège de Douala (Cameroun) et filiale de Paris (France).',
-            'activeNav' => 'contact',
-            'subjects' => self::SUBJECTS,
+        $this->view('contact', $this->viewData([
             'old' => [],
             'errors' => [],
             'sent' => false,
-        ]);
+        ]));
     }
 
     public function submit(Request $request): void
@@ -49,15 +46,11 @@ class ContactController extends Controller
         }
 
         if (count($errors) > 0) {
-            $this->view('contact', [
-                'pageTitle' => 'Contact — ADETIS Engineering',
-                'pageDescription' => 'Contactez ADETIS Engineering : siège de Douala (Cameroun) et filiale de Paris (France).',
-                'activeNav' => 'contact',
-                'subjects' => self::SUBJECTS,
+            $this->view('contact', $this->viewData([
                 'old' => $data,
                 'errors' => $errors,
                 'sent' => false,
-            ]);
+            ]));
 
             return;
         }
@@ -70,14 +63,27 @@ class ContactController extends Controller
             'message' => trim((string) $data['message']),
         ]);
 
-        $this->view('contact', [
+        $this->view('contact', $this->viewData([
+            'old' => [],
+            'errors' => [],
+            'sent' => true,
+        ]));
+    }
+
+    /** @param array<string, mixed> $extra @return array<string, mixed> */
+    private function viewData(array $extra): array
+    {
+        return array_merge([
             'pageTitle' => 'Contact — ADETIS Engineering',
             'pageDescription' => 'Contactez ADETIS Engineering : siège de Douala (Cameroun) et filiale de Paris (France).',
             'activeNav' => 'contact',
             'subjects' => self::SUBJECTS,
-            'old' => [],
-            'errors' => [],
-            'sent' => true,
-        ]);
+            'jsonLd' => [
+                Seo::breadcrumbJsonLd([
+                    ['name' => 'Accueil', 'path' => '/'],
+                    ['name' => 'Contact'],
+                ]),
+            ],
+        ], $extra);
     }
 }
