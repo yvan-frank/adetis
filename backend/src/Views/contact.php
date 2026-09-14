@@ -51,7 +51,7 @@
                             <?php if (!empty($errors['message'])): ?><p class="field-error"><?= htmlspecialchars($errors['message']) ?></p><?php endif; ?>
                         </div>
                         <div class="field field-full">
-                            <button type="submit" class="btn btn-solid">Envoyer le message</button>
+                            <button type="submit" class="btn btn-accent">Envoyer le message</button>
                         </div>
                     </div>
                 </form>

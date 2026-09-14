@@ -23,7 +23,7 @@
 <section class="alt">
     <div class="container">
         <div class="hero__actions" style="justify-content:center">
-            <a class="btn btn-solid" href="/contact">Nous solliciter pour un projet solidaire</a>
+            <a class="btn btn-accent" href="/contact">Nous solliciter pour un projet solidaire</a>
         </div>
     </div>
 </section>

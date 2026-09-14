@@ -47,7 +47,7 @@
 <section>
     <div class="container">
         <div class="hero__actions" style="justify-content:center">
-            <a class="btn btn-solid" href="/contact">Devenir partenaire</a>
+            <a class="btn btn-accent" href="/contact">Devenir partenaire</a>
         </div>
     </div>
 </section>

@@ -1,10 +1,12 @@
-/* ADETIS Engineering — charte graphique : bleu roi/nuit, blanc, gris. */
+/* ADETIS Engineering — charte graphique : bleu roi/nuit, blanc, gris, touche de rouge vif. */
 
 :root {
     --color-navy: #0b2e5c;
     --color-navy-dark: #071c3a;
     --color-navy-light: #1a4a8a;
     --color-accent: #2f6fd6;
+    --color-red: #e0192c;
+    --color-red-dark: #ad0f1f;
     --color-white: #ffffff;
     --color-gray-50: #f5f7fa;
     --color-gray-100: #eceff3;
@@ -105,6 +107,7 @@ a:hover {
 }
 
 .main-nav a {
+    position: relative;
     display: inline-block;
     padding: 10px 14px;
     border-radius: 6px;
@@ -117,6 +120,17 @@ a:hover {
 .main-nav a.is-active {
     background: var(--color-gray-50);
     color: var(--color-navy);
+}
+
+.main-nav a.is-active::after {
+    content: "";
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    bottom: 4px;
+    height: 2px;
+    background: var(--color-red);
+    border-radius: 2px;
 }
 
 .nav-toggle {
@@ -278,6 +292,16 @@ body.nav-open {
     color: var(--color-white);
 }
 
+.btn-accent {
+    background: var(--color-red);
+    color: var(--color-white);
+}
+
+.btn-accent:hover {
+    background: var(--color-red-dark);
+    color: var(--color-white);
+}
+
 /* ---------- Sections ---------- */
 
 section {
@@ -298,7 +322,7 @@ section.alt {
     letter-spacing: 0.08em;
     font-size: 0.78rem;
     font-weight: 700;
-    color: var(--color-accent);
+    color: var(--color-red);
 }
 
 .section-heading h2 {
@@ -334,9 +358,15 @@ section.alt {
 .card {
     background: var(--color-white);
     border: 1px solid var(--color-gray-100);
+    border-top: 3px solid transparent;
     border-radius: var(--radius);
     padding: 28px;
     box-shadow: var(--shadow);
+    transition: border-top-color 0.2s ease;
+}
+
+.card:hover {
+    border-top-color: var(--color-red);
 }
 
 .card h3 {
@@ -371,7 +401,7 @@ section.alt {
 
 .pole__index {
     display: inline-block;
-    background: var(--color-navy);
+    background: var(--color-red);
     color: var(--color-white);
     font-weight: 700;
     font-size: 0.8rem;
@@ -494,8 +524,14 @@ section.alt {
     box-shadow: 0 0 0 3px rgba(47, 111, 214, 0.15);
 }
 
+.field:has(.field-error) input,
+.field:has(.field-error) select,
+.field:has(.field-error) textarea {
+    border-color: var(--color-red);
+}
+
 .field-error {
-    color: #b3261e;
+    color: var(--color-red-dark);
     font-size: 0.82rem;
     margin-top: 5px;
 }
