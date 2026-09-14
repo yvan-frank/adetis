@@ -20,8 +20,9 @@ class PageController extends Controller
     {
         $this->view('services', [
             'pageTitle' => "Nos pôles d'expertise — ADETIS Engineering",
-            'pageDescription' => "Bureau d'études CAO/DAO, recherche appliquée, Boostmarket et formation : les quatre pôles d'expertise d'ADETIS.",
+            'pageDescription' => "Bureau d'études CAO/DAO, recherche appliquée, Boostmarket, formation et immigration/études en France : les cinq pôles d'expertise d'ADETIS.",
             'activeNav' => 'services',
+            'poles' => array_values(PoleController::all()),
         ]);
     }
 

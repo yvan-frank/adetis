@@ -1,4 +1,4 @@
-<section class="hero">
+<section class="hero hero--media" style="background-image: linear-gradient(120deg, rgba(7,28,58,.94), rgba(11,46,92,.88) 55%, rgba(26,74,138,.8)), url('/assets/img/hero-industry.jpg')">
     <div class="container">
         <span class="hero__eyebrow">Ingénierie · Industrie · Innovation</span>
         <h1>L'expertise en ingénierie, innovation industrielle et services associés en Afrique Centrale et à l'international</h1>
@@ -14,29 +14,39 @@
     <div class="container">
         <div class="section-heading">
             <span class="section-heading__eyebrow">Accès rapide</span>
-            <h2>Nos quatre pôles d'activités</h2>
+            <h2>Nos cinq pôles d'activités</h2>
             <p>Une offre intégrée, de la conception à la formation, au service de l'industrialisation régionale.</p>
         </div>
         <div class="grid grid-4">
-            <div class="card">
+            <div class="card card--media">
+                <div class="card__media" style="background-image: url('/assets/img/poles/bureau-etudes-methodes.jpg')"></div>
                 <h3>Bureau d'Études &amp; Méthodes</h3>
                 <p>Conception et modélisation 2D/3D : mécanique, automatisation, énergétique, génie civil.</p>
-                <a href="/poles-expertise#pole-1">En savoir plus →</a>
+                <a href="/poles-expertise/bureau-etudes-methodes">En savoir plus →</a>
             </div>
-            <div class="card">
+            <div class="card card--media">
+                <div class="card__media" style="background-image: url('/assets/img/poles/recherche-appliquee.jpg')"></div>
                 <h3>Recherche Appliquée</h3>
                 <p>Laboratoire et centre de production mécanique pour la modernisation de l'industrie locale.</p>
-                <a href="/poles-expertise#pole-2">En savoir plus →</a>
+                <a href="/poles-expertise/recherche-appliquee">En savoir plus →</a>
             </div>
-            <div class="card">
+            <div class="card card--media">
+                <div class="card__media" style="background-image: url('/assets/img/poles/boostmarket.jpg')"></div>
                 <h3>Boostmarket</h3>
                 <p>Achat, vente et location de matériels et machines industrielles neufs et d'occasion.</p>
-                <a href="/poles-expertise#pole-3">En savoir plus →</a>
+                <a href="/poles-expertise/boostmarket">En savoir plus →</a>
             </div>
-            <div class="card">
+            <div class="card card--media">
+                <div class="card__media" style="background-image: url('/assets/img/poles/formation-conferences.jpg')"></div>
                 <h3>Formation &amp; Conférences</h3>
                 <p>Modules de formation continue et spécialisée, en petits groupes personnalisés.</p>
-                <a href="/poles-expertise#pole-4">En savoir plus →</a>
+                <a href="/poles-expertise/formation-conferences">En savoir plus →</a>
+            </div>
+            <div class="card card--media">
+                <div class="card__media" style="background-image: url('/assets/img/poles/immigration-etudes-france.jpg')"></div>
+                <h3>Immigration &amp; Études en France</h3>
+                <p>Accompagnement complet de la procédure Campus France, du dossier au visa étudiant.</p>
+                <a href="/poles-expertise/immigration-etudes-france">En savoir plus →</a>
             </div>
         </div>
     </div>
@@ -54,7 +64,7 @@
                 <span>Implantations : Douala &amp; Paris</span>
             </div>
             <div class="stat">
-                <strong>4</strong>
+                <strong>5</strong>
                 <span>Pôles d'expertise intégrés</span>
             </div>
             <div class="stat">
@@ -70,14 +80,17 @@
 </section>
 
 <section>
-    <div class="container">
-        <div class="section-heading">
-            <span class="section-heading__eyebrow">Rayonnement</span>
-            <h2>Des partenariats en Afrique Centrale et à l'international</h2>
-            <p>ADETIS coordonne son action entre son siège social de Douala et sa filiale de Paris, avec des partenariats techniques et académiques en zone CEMAC, en Europe et en Russie.</p>
-        </div>
-        <div class="hero__actions">
-            <a class="btn btn-solid" href="/partenaires">Voir nos partenaires &amp; marchés</a>
+    <div class="container split">
+        <div class="split__media" style="background-image: url('/assets/img/partnership-handshake.jpg')"></div>
+        <div class="split__body">
+            <div class="section-heading">
+                <span class="section-heading__eyebrow">Rayonnement</span>
+                <h2>Des partenariats en Afrique Centrale et à l'international</h2>
+                <p>ADETIS coordonne son action entre son siège social de Douala et sa filiale de Paris, avec des partenariats techniques et académiques en zone CEMAC, en Europe et en Russie.</p>
+            </div>
+            <div class="hero__actions">
+                <a class="btn btn-solid" href="/partenaires">Voir nos partenaires &amp; marchés</a>
+            </div>
         </div>
     </div>
 </section>
