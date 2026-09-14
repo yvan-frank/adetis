@@ -1,0 +1,19 @@
+{
+    "name": "you/php-mvc-skeleton",
+    "description": "Squelette PHP MVC natif (sans framework) : routeur, migrations SQL, auth JWT",
+    "type": "project",
+    "require": {
+        "php": ">=8.1",
+        "ext-pdo": "*",
+        "ext-pdo_mysql": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "scripts": {
+        "migrate": "php scripts/migrate.php",
+        "make:migration": "php scripts/make_migration.php"
+    }
+}

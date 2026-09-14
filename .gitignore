@@ -1,0 +1,12 @@
+/backend/vendor/
+/backend/.env
+/backend/storage/*
+!/backend/storage/.gitkeep
+/backend/public/assets/islands-runtime.js
+/backend/public/assets/islands-runtime.css
+
+/frontend/node_modules/
+/frontend/dist/
+
+.idea/
+.vscode/
