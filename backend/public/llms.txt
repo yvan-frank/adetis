@@ -6,17 +6,17 @@ ADETIS Engineering propose cinq pôles d'expertise complémentaires : bureau d'�
 
 ## Pages principales
 
-- [Accueil](https://www.adetis-engineering.com/) : présentation générale de l'entreprise et de ses cinq pôles.
-- [À propos](https://www.adetis-engineering.com/a-propos) : vision, implantations (Douala & Paris) et équipe dirigeante.
-- [Nos pôles d'expertise](https://www.adetis-engineering.com/poles-expertise) : liste des cinq pôles d'activité.
-- [Bureau d'Études & Méthodes](https://www.adetis-engineering.com/poles-expertise/bureau-etudes-methodes) : conception et modélisation CAO/DAO 2D/3D (mécanique, automatisation, énergétique, génie civil, chaudronnerie).
-- [Recherche Appliquée](https://www.adetis-engineering.com/poles-expertise/recherche-appliquee) : laboratoire et centre de production mécanique.
-- [Boostmarket](https://www.adetis-engineering.com/poles-expertise/boostmarket) : achat, vente et location de machines industrielles.
-- [Formation & Conférences](https://www.adetis-engineering.com/poles-expertise/formation-conferences) : formations continues et spécialisées en petits groupes.
-- [Immigration & Études en France](https://www.adetis-engineering.com/poles-expertise/immigration-etudes-france) : accompagnement complet de la procédure Campus France (orientation, dossier, entretien, visa étudiant, installation, suivi post-admission).
-- [Partenaires & Marchés](https://www.adetis-engineering.com/partenaires) : zones d'intervention et typologie de partenaires.
-- [Engagement social](https://www.adetis-engineering.com/engagement-social) : formation et réinsertion professionnelle de la jeunesse.
-- [Contact](https://www.adetis-engineering.com/contact) : coordonnées du siège de Douala et de la filiale de Paris.
+- [Accueil](https://adetis-engineering.com/) : présentation générale de l'entreprise et de ses cinq pôles.
+- [À propos](https://adetis-engineering.com/a-propos) : vision, implantations (Douala & Paris) et équipe dirigeante.
+- [Nos pôles d'expertise](https://adetis-engineering.com/poles-expertise) : liste des cinq pôles d'activité.
+- [Bureau d'Études & Méthodes](https://adetis-engineering.com/poles-expertise/bureau-etudes-methodes) : conception et modélisation CAO/DAO 2D/3D (mécanique, automatisation, énergétique, génie civil, chaudronnerie).
+- [Recherche Appliquée](https://adetis-engineering.com/poles-expertise/recherche-appliquee) : laboratoire et centre de production mécanique.
+- [Boostmarket](https://adetis-engineering.com/poles-expertise/boostmarket) : achat, vente et location de machines industrielles.
+- [Formation & Conférences](https://adetis-engineering.com/poles-expertise/formation-conferences) : formations continues et spécialisées en petits groupes.
+- [Immigration & Études en France](https://adetis-engineering.com/poles-expertise/immigration-etudes-france) : accompagnement complet de la procédure Campus France (orientation, dossier, entretien, visa étudiant, installation, suivi post-admission).
+- [Partenaires & Marchés](https://adetis-engineering.com/partenaires) : zones d'intervention et typologie de partenaires.
+- [Engagement social](https://adetis-engineering.com/engagement-social) : formation et réinsertion professionnelle de la jeunesse.
+- [Contact](https://adetis-engineering.com/contact) : coordonnées du siège de Douala et de la filiale de Paris.
 
 ## Contact
 

@@ -1,5 +1,9 @@
 RewriteEngine On
 
+# Redirige www.adetis-engineering.com vers adetis-engineering.com (301, sans www)
+RewriteCond %{HTTP_HOST} ^www\.adetis-engineering\.com$ [NC]
+RewriteRule ^ https://adetis-engineering.com%{REQUEST_URI} [L,R=301]
+
 # Sert les fichiers/assets existants tels quels
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
