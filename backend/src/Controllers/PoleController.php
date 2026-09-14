@@ -23,7 +23,7 @@ class PoleController extends Controller
         $others = array_filter($poles, fn (array $p) => $p['slug'] !== $slug);
 
         $this->view('pole-detail', [
-            'pageTitle' => $pole['title'] . ' — ADETIS Engineering',
+            'pageTitle' => ($pole['seoTitle'] ?? $pole['title']) . ' — ADETIS Engineering',
             'pageDescription' => $pole['metaDescription'],
             'activeNav' => 'services',
             'pole' => $pole,
@@ -70,7 +70,7 @@ class PoleController extends Controller
                 'title' => "Bureau d'Études & Méthodes (CAO / DAO)",
                 'shortTitle' => "Bureau d'Études & Méthodes",
                 'lead' => "Nous transformons vos idées en plans, modèles 3D et dossiers d'exécution exploitables sur le terrain : mécanique, automatisation, énergétique, électricité, tuyauterie, génie civil et chaudronnerie.",
-                'metaDescription' => "Conception et modélisation CAO/DAO 2D/3D : mécanique, automatisation, énergétique, électricité, tuyauterie, génie civil et chaudronnerie, sous AutoCAD, SolidWorks, CATIA, ANSYS...",
+                'metaDescription' => "Conception et modélisation CAO/DAO 2D/3D : mécanique, automatisation, énergétique, tuyauterie, génie civil et chaudronnerie, sous AutoCAD, SolidWorks, CATIA.",
                 'stats' => [
                     ['value' => '8+', 'label' => 'Logiciels CAO/DAO maîtrisés'],
                     ['value' => '2D/3D', 'label' => 'Modélisation complète'],
@@ -100,8 +100,9 @@ class PoleController extends Controller
                 'eyebrow' => "Pôle 2 — Innovation",
                 'title' => "Recherche Appliquée & Centre de Production Mécanique",
                 'shortTitle' => "Recherche Appliquée",
+                'seoTitle' => "Recherche Appliquée & Production Mécanique",
                 'lead' => "Un laboratoire et un centre de fabrication de pièces mécaniques dédiés à l'innovation industrielle, au service de la modernisation des industries locales et de la valorisation des ressources naturelles.",
-                'metaDescription' => "Laboratoire et centre de production mécanique dédiés à la recherche, l'innovation et la modernisation de l'industrie locale et de l'extraction des ressources naturelles.",
+                'metaDescription' => "Laboratoire et centre de production mécanique dédiés à la recherche, l'innovation et la modernisation de l'industrie locale.",
                 'stats' => [
                     ['value' => 'R&D', 'label' => 'Laboratoire dédié'],
                     ['value' => '100%', 'label' => 'Production locale'],
@@ -129,8 +130,9 @@ class PoleController extends Controller
                 'eyebrow' => "Pôle 3 — Équipements",
                 'title' => "Boostmarket — Achat, Vente & Location d'Équipements",
                 'shortTitle' => "Boostmarket",
+                'seoTitle' => "Boostmarket — Équipements Industriels",
                 'lead' => "Notre plateforme d'approvisionnement en matériels et machines industrielles neufs et de seconde main, avec des services de location et de revente pour PME, grandes entreprises, BTP, secteur médical et universitaire.",
-                'metaDescription' => "Boostmarket : achat, vente et location de matériels et machines industrielles neufs et d'occasion, pour PME, grandes entreprises, BTP, secteur médical et universitaire.",
+                'metaDescription' => "Boostmarket : achat, vente et location de matériels et machines industrielles neufs et d'occasion, pour PME, BTP, secteur médical et universitaire.",
                 'stats' => [
                     ['value' => 'Neuf', 'label' => '& seconde main'],
                     ['value' => '4', 'label' => 'Secteurs desservis'],
@@ -187,6 +189,7 @@ class PoleController extends Controller
                 'eyebrow' => "Pôle 5 — Mobilité internationale",
                 'title' => "Immigration & Études en France (Campus France)",
                 'shortTitle' => "Immigration & Études en France",
+                'seoTitle' => "Immigration & Études en France",
                 'lead' => "Un accompagnement complet pour réussir votre mobilité étudiante vers la France : procédure Campus France, choix d'orientation, dossier de candidature, entretien et visa étudiant.",
                 'metaDescription' => "Accompagnement complet de la procédure Campus France : orientation, dossier Études en France, préparation aux entretiens et visa étudiant.",
                 'stats' => [

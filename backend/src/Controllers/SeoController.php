@@ -14,12 +14,21 @@ use App\Core\Seo;
  */
 class SeoController extends Controller
 {
+    /**
+     * Date de dernière revue éditoriale du contenu (à mettre à jour
+     * manuellement lors d'un changement de contenu significatif) — utilisée
+     * comme <lastmod> plutôt qu'une date générée à la volée, qui donnerait
+     * une fausse impression de fraîcheur quotidienne à Google.
+     */
+    private const CONTENT_LAST_REVIEWED = '2026-09-14';
+
     public function robots(Request $request): void
     {
         header('Content-Type: text/plain; charset=utf-8');
 
         echo "User-agent: *\n";
-        echo "Allow: /\n\n";
+        echo "Allow: /\n";
+        echo "Disallow: /api/\n\n";
         echo 'Sitemap: ' . Seo::absoluteUrl('/sitemap.xml') . "\n";
     }
 
@@ -51,6 +60,7 @@ class SeoController extends Controller
         foreach ($urls as $url) {
             echo "  <url>\n";
             echo '    <loc>' . htmlspecialchars(Seo::absoluteUrl($url['path'])) . "</loc>\n";
+            echo '    <lastmod>' . self::CONTENT_LAST_REVIEWED . "</lastmod>\n";
             echo '    <changefreq>' . $url['changefreq'] . "</changefreq>\n";
             echo '    <priority>' . $url['priority'] . "</priority>\n";
             echo "  </url>\n";

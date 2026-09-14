@@ -47,7 +47,7 @@ class ImmigrationFeatureController extends Controller
         }
 
         $this->view('immigration-feature-detail', [
-            'pageTitle' => $feature['title'] . ' — ADETIS Engineering',
+            'pageTitle' => ($feature['seoTitle'] ?? $feature['title']) . ' — ADETIS Engineering',
             'pageDescription' => $feature['metaDescription'],
             'activeNav' => 'services',
             'feature' => $feature,
@@ -220,6 +220,7 @@ class ImmigrationFeatureController extends Controller
                 'icon' => '🛂',
                 'eyebrow' => 'Immigration & Études en France',
                 'title' => "Visa étudiant : constitution du dossier VLS-TS",
+                'seoTitle' => "Visa étudiant VLS-TS",
                 'lead' => "Une fois l'admission obtenue, la demande de visa long séjour valant titre de séjour (VLS-TS) mention « étudiant » est l'étape qui autorise concrètement votre entrée et votre séjour en France pour plus de trois mois.",
                 'metaDescription' => "Constitution du dossier de visa étudiant VLS-TS : pièces justificatives, ressources financières exigées, dépôt au consulat et délais.",
                 'stats' => [

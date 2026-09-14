@@ -5,6 +5,7 @@ use App\Core\Seo;
 
 $title = $pageTitle ?? 'ADETIS Engineering';
 $description = $pageDescription ?? "ADETIS Engineering : cabinet d'ingénierie, bureau d'études CAO/DAO, recherche appliquée, équipements industriels et formation en Afrique Centrale et en France.";
+$robots = $robots ?? 'index, follow';
 $requestPath = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/';
 $canonicalUrl = Seo::absoluteUrl($requestPath);
 $ogImageUrl = Seo::absoluteUrl($ogImage ?? '/assets/img/hero-industry.jpg');
@@ -18,7 +19,7 @@ $jsonLdDocuments = array_merge([Seo::organizationJsonLd()], $jsonLd ?? []);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?= htmlspecialchars($title) ?></title>
     <meta name="description" content="<?= htmlspecialchars($description) ?>">
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="<?= htmlspecialchars($robots) ?>">
     <link rel="canonical" href="<?= htmlspecialchars($canonicalUrl) ?>">
     <link rel="icon" type="image/png" href="/assets/img/logo-adetis.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
