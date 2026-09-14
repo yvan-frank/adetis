@@ -29,7 +29,7 @@ html {
 
 body {
     margin: 0;
-    font-family: "Segoe UI", Calibri, Arial, sans-serif;
+    font-family: "Montserrat", "Segoe UI", Calibri, Arial, sans-serif;
     color: var(--color-ink);
     background: var(--color-white);
     line-height: 1.6;
