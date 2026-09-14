@@ -14,7 +14,7 @@ class HomeController extends Controller
             'pageTitle' => 'ADETIS Engineering — Ingénierie, industrie & services associés',
             'pageDescription' => "Cabinet d'études en ingénierie, recherche appliquée, équipements industriels et formation, présent à Douala (Cameroun) et à Paris (France).",
             'activeNav' => 'home',
-            'ogImage' => '/assets/img/hero-industry.jpg',
+            'ogImage' => '/assets/img/logo-adetis.png',
             'jsonLd' => [
                 [
                     '@context' => 'https://schema.org',
