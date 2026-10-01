@@ -9,7 +9,7 @@ class Validator
     public function required(array $data, string $field, string $label): static
     {
         if (!isset($data[$field]) || trim((string) $data[$field]) === '') {
-            $this->errors[$field] = "$label est obligatoire.";
+            $this->errors[$field] = t('validation.required', ['label' => $label]);
         }
 
         return $this;
@@ -18,7 +18,7 @@ class Validator
     public function numeric(array $data, string $field, string $label): static
     {
         if (isset($data[$field]) && $data[$field] !== null && !is_numeric($data[$field])) {
-            $this->errors[$field] = "$label doit être un nombre.";
+            $this->errors[$field] = t('validation.numeric', ['label' => $label]);
         }
 
         return $this;
@@ -27,7 +27,7 @@ class Validator
     public function min(array $data, string $field, float $min, string $label): static
     {
         if (isset($data[$field]) && $data[$field] !== null && is_numeric($data[$field]) && (float) $data[$field] < $min) {
-            $this->errors[$field] = "$label doit être supérieur ou égal à $min.";
+            $this->errors[$field] = t('validation.min', ['label' => $label, 'min' => $min]);
         }
 
         return $this;
@@ -36,7 +36,7 @@ class Validator
     public function email(array $data, string $field, string $label): static
     {
         if (isset($data[$field]) && !filter_var($data[$field], FILTER_VALIDATE_EMAIL)) {
-            $this->errors[$field] = "$label doit être une adresse email valide.";
+            $this->errors[$field] = t('validation.email', ['label' => $label]);
         }
 
         return $this;

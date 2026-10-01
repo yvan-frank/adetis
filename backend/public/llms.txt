@@ -22,3 +22,19 @@ ADETIS Engineering propose cinq pôles d'expertise complémentaires : bureau d'�
 
 - Siège social : BP 12067, Douala, Cameroun — +237 620 22 48 11 — directeur.general@adetis-engineering.com
 - Filiale France : 3 rue de Tourtille, 75020 Paris — +33 6 17 92 12 19 — dtakendo@yahoo.fr
+
+## English version
+
+> ADETIS Engineering is an engineering consultancy based in Douala (Cameroon) with a subsidiary in Paris (France), operating in Central Africa (CEMAC zone) and Europe. The site is available in French and English; the English pages live under /en.
+
+- [Home](https://adetis-engineering.com/en)
+- [About](https://adetis-engineering.com/en/about)
+- [Our areas of expertise](https://adetis-engineering.com/en/expertise-areas)
+- [Design & Methods Office](https://adetis-engineering.com/en/expertise-areas/design-methods-office): 2D/3D CAD and drafting design.
+- [Applied Research](https://adetis-engineering.com/en/expertise-areas/applied-research): laboratory and mechanical production centre.
+- [Boostmarket](https://adetis-engineering.com/en/expertise-areas/boostmarket): purchase, sale and rental of industrial equipment, maintenance parts, Amazon goods transfer.
+- [Training & Conferences](https://adetis-engineering.com/en/expertise-areas/training-conferences)
+- [Immigration & Studies in France](https://adetis-engineering.com/en/expertise-areas/immigration-study-in-france): Campus France support.
+- [Partners & Markets](https://adetis-engineering.com/en/partners)
+- [Social commitment](https://adetis-engineering.com/en/social-commitment)
+- [Contact](https://adetis-engineering.com/en/contact)

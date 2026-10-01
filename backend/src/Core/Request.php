@@ -6,6 +6,8 @@ class Request
 {
     public string $method;
     public string $path;
+    /** Chemin tel que reçu, préfixe de langue inclus. */
+    public string $rawPath;
     public array $query;
     public array $body;
     public array $params = [];
@@ -13,7 +15,8 @@ class Request
     public function __construct()
     {
         $this->method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
-        $this->path = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/';
+        $this->rawPath = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/';
+        $this->path = Lang::boot($this->rawPath);
         $this->query = $_GET;
         $this->body = $this->parseBody();
     }

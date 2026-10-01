@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
+use App\Core\Lang;
 use App\Core\Request;
 use App\Core\Seo;
 
@@ -24,9 +25,9 @@ class ImmigrationFeatureController extends Controller
 
         $jsonLd = [
             Seo::breadcrumbJsonLd([
-                ['name' => 'Accueil', 'path' => '/'],
-                ['name' => "Nos pôles d'expertise", 'path' => '/poles-expertise'],
-                ['name' => 'Immigration & Études en France', 'path' => '/poles-expertise/immigration-etudes-france'],
+                ['name' => t('nav.home'), 'path' => '/'],
+                ['name' => t('nav.services'), 'path' => '/poles-expertise'],
+                ['name' => t('pole.immigration_name'), 'path' => '/poles-expertise/immigration-etudes-france'],
                 ['name' => $feature['title']],
             ]),
         ];
@@ -48,6 +49,7 @@ class ImmigrationFeatureController extends Controller
 
         $this->view('immigration-feature-detail', [
             'pageTitle' => ($feature['seoTitle'] ?? $feature['title']) . ' — ADETIS Engineering',
+            'translated' => true,
             'pageDescription' => $feature['metaDescription'],
             'activeNav' => 'services',
             'feature' => $feature,
@@ -356,6 +358,9 @@ class ImmigrationFeatureController extends Controller
         foreach ($list as $feature) {
             $features[$feature['slug']] = $feature;
         }
+
+        // Textes de la langue courante (lang/<code>/content/immigration.php), par slug.
+        $features = Lang::overlay($features, 'immigration');
 
         return $features;
     }

@@ -4,8 +4,8 @@
 
 <section class="page-hero">
     <div class="container">
-        <h1>Nos pôles d'expertise</h1>
-        <p>Une offre intégrée qui couvre la conception, la production, l'approvisionnement en équipements, la formation et la mobilité internationale.</p>
+        <h1><?= te('services.title') ?></h1>
+        <p><?= te('services.lead') ?></p>
     </div>
 </section>
 
@@ -13,7 +13,7 @@
     <div class="container">
         <div class="poles-nav">
             <?php foreach ($poles as $pole): ?>
-                <a href="/poles-expertise/<?= htmlspecialchars($pole['slug']) ?>"><?= htmlspecialchars($pole['shortTitle']) ?></a>
+                <a href="<?= htmlspecialchars(lurl('/poles-expertise/' . $pole['slug'])) ?>"><?= htmlspecialchars($pole['shortTitle']) ?></a>
             <?php endforeach; ?>
         </div>
 
@@ -21,10 +21,10 @@
             <article class="pole pole--media">
                 <div class="pole__media" style="background-image: url('<?= htmlspecialchars($pole['image']) ?>')"></div>
                 <div class="pole__body">
-                    <span class="pole__index">Pôle <?= $pole['number'] ?></span>
+                    <span class="pole__index"><?= te('pole.label', ['n' => $pole['number']]) ?></span>
                     <h3><?= htmlspecialchars($pole['title']) ?></h3>
                     <p><?= htmlspecialchars($pole['lead']) ?></p>
-                    <a class="pole__link" href="/poles-expertise/<?= htmlspecialchars($pole['slug']) ?>">Découvrir ce pôle →</a>
+                    <a class="pole__link" href="<?= htmlspecialchars(lurl('/poles-expertise/' . $pole['slug'])) ?>"><?= te('services.discover') ?></a>
                 </div>
             </article>
         <?php endforeach; ?>
@@ -34,9 +34,9 @@
 <section class="cta-banner">
     <div class="container cta-banner__inner">
         <div>
-            <h2>Un besoin qui mêle plusieurs pôles ?</h2>
-            <p>Nos équipes pluridisciplinaires construisent avec vous une réponse sur mesure, quel que soit votre projet.</p>
+            <h2><?= te('services.cta.title') ?></h2>
+            <p><?= te('services.cta.text') ?></p>
         </div>
-        <a class="btn btn-primary" href="/contact">Nous contacter</a>
+        <a class="btn btn-primary" href="<?= lurl('/contact') ?>"><?= te('home.cta.button') ?></a>
     </div>
 </section>

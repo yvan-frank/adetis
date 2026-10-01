@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
+use App\Core\Lang;
 use App\Core\Request;
 use App\Core\Seo;
 use App\Core\Validator;
@@ -10,6 +11,7 @@ use App\Models\ContactMessage;
 
 class ContactController extends Controller
 {
+    /** Libellés français : valeurs enregistrées en base, quelle que soit la langue du visiteur. */
     private const SUBJECTS = [
         'etudes' => "Études CAO / DAO",
         'achats' => 'Achats de machines (Boostmarket)',
@@ -32,17 +34,17 @@ class ContactController extends Controller
         $data = $request->body;
 
         $validator = (new Validator())
-            ->required($data, 'name', 'Le nom')
-            ->required($data, 'email', 'Email')
-            ->email($data, 'email', 'Email')
-            ->required($data, 'subject', 'Le sujet')
-            ->required($data, 'message', 'Le message');
+            ->required($data, 'name', t('label.the_name'))
+            ->required($data, 'email', t('label.email'))
+            ->email($data, 'email', t('label.email'))
+            ->required($data, 'subject', t('label.the_subject'))
+            ->required($data, 'message', t('label.the_message'));
 
         $subjectKey = (string) ($data['subject'] ?? '');
         $errors = $validator->errors();
 
         if (!isset($errors['subject']) && !array_key_exists($subjectKey, self::SUBJECTS)) {
-            $errors['subject'] = 'Le sujet sélectionné est invalide.';
+            $errors['subject'] = t('contact.error.subject');
         }
 
         if (count($errors) > 0) {
@@ -74,14 +76,15 @@ class ContactController extends Controller
     private function viewData(array $extra): array
     {
         return array_merge([
-            'pageTitle' => 'Contact — ADETIS Engineering',
-            'pageDescription' => 'Contactez ADETIS Engineering : siège de Douala (Cameroun) et filiale de Paris (France).',
+            'pageTitle' => t('contact.meta.title'),
+            'pageDescription' => t('contact.meta.description'),
+            'translated' => true,
             'activeNav' => 'contact',
-            'subjects' => self::SUBJECTS,
+            'subjects' => Lang::choices('contact.subject', self::SUBJECTS),
             'jsonLd' => [
                 Seo::breadcrumbJsonLd([
-                    ['name' => 'Accueil', 'path' => '/'],
-                    ['name' => 'Contact'],
+                    ['name' => t('nav.home'), 'path' => '/'],
+                    ['name' => t('nav.contact')],
                 ]),
             ],
         ], $extra);

@@ -1,29 +1,41 @@
+<?php
+$e = static fn (string $key): string => htmlspecialchars(t($key));
+
+$poleCards = [
+    ['bureau-etudes-methodes', 'home.pole.bem'],
+    ['recherche-appliquee', 'home.pole.rech'],
+    ['boostmarket', 'home.pole.boost'],
+    ['formation-conferences', 'home.pole.form'],
+    ['immigration-etudes-france', 'home.pole.immi'],
+];
+$whyCards = [['🎯', 'integrated'], ['🌍', 'bridge'], ['⚡', 'single'], ['🤝', 'network']];
+?>
 <section class="hero hero--media" style="--hero-img: url('/assets/img/hero-industry.jpg')">
     <div class="container">
-        <span class="hero__eyebrow">Ingénierie · Industrie · Innovation</span>
-        <h1>L'ingénierie qui fait avancer l'industrialisation de l'Afrique Centrale</h1>
-        <p>ADETIS Engineering conçoit, équipe, forme et accompagne : un partenaire unique pour vos projets d'ingénierie, d'équipement industriel et de mobilité internationale, de Douala à Paris.</p>
+        <span class="hero__eyebrow"><?= $e('home.hero.eyebrow') ?></span>
+        <h1><?= $e('home.hero.title') ?></h1>
+        <p><?= $e('home.hero.text') ?></p>
         <div class="hero__actions">
-            <a class="btn btn-primary" href="/poles-expertise">Découvrir nos pôles</a>
-            <a class="btn btn-outline" href="/contact">Parlons de votre projet</a>
+            <a class="btn btn-primary" href="<?= lurl('/poles-expertise') ?>"><?= $e('home.hero.cta_poles') ?></a>
+            <a class="btn btn-outline" href="<?= lurl('/contact') ?>"><?= $e('home.hero.cta_contact') ?></a>
         </div>
 
         <div class="hero-stats">
             <div class="hero-stat">
                 <strong>5</strong>
-                <span>Pôles d'expertise intégrés</span>
+                <span><?= $e('home.stat.poles') ?></span>
             </div>
             <div class="hero-stat">
                 <strong>2</strong>
-                <span>Implantations : Douala &amp; Paris</span>
+                <span><?= $e('home.stat.sites') ?></span>
             </div>
             <div class="hero-stat">
                 <strong>CEMAC</strong>
-                <span>Zone d'intervention prioritaire</span>
+                <span><?= $e('home.stat.zone') ?></span>
             </div>
             <div class="hero-stat">
                 <strong>2025–2035</strong>
-                <span>Horizon d'industrialisation visé</span>
+                <span><?= $e('home.stat.horizon') ?></span>
             </div>
         </div>
     </div>
@@ -32,41 +44,19 @@
 <section>
     <div class="container">
         <div class="section-heading">
-            <span class="section-heading__eyebrow">Accès rapide</span>
-            <h2>Une expertise, cinq façons de vous faire avancer</h2>
-            <p>De la conception à la formation, en passant par l'équipement et la mobilité étudiante : une offre intégrée pensée pour l'industrialisation régionale.</p>
+            <span class="section-heading__eyebrow"><?= $e('home.quick.eyebrow') ?></span>
+            <h2><?= $e('home.quick.title') ?></h2>
+            <p><?= $e('home.quick.text') ?></p>
         </div>
         <div class="grid grid-4">
-            <div class="card card--media">
-                <div class="card__media" style="background-image: url('/assets/img/poles/bureau-etudes-methodes.jpg')"></div>
-                <h3>Bureau d'Études &amp; Méthodes</h3>
-                <p>Conception et modélisation 2D/3D : mécanique, automatisation, énergétique, génie civil.</p>
-                <a href="/poles-expertise/bureau-etudes-methodes">En savoir plus →</a>
-            </div>
-            <div class="card card--media">
-                <div class="card__media" style="background-image: url('/assets/img/poles/recherche-appliquee.jpg')"></div>
-                <h3>Recherche Appliquée</h3>
-                <p>Laboratoire et centre de production mécanique pour la modernisation de l'industrie locale.</p>
-                <a href="/poles-expertise/recherche-appliquee">En savoir plus →</a>
-            </div>
-            <div class="card card--media">
-                <div class="card__media" style="background-image: url('/assets/img/poles/boostmarket.jpg')"></div>
-                <h3>Boostmarket</h3>
-                <p>Achat, vente et location de matériels et machines industrielles neufs et d'occasion.</p>
-                <a href="/poles-expertise/boostmarket">En savoir plus →</a>
-            </div>
-            <div class="card card--media">
-                <div class="card__media" style="background-image: url('/assets/img/poles/formation-conferences.jpg')"></div>
-                <h3>Formation &amp; Conférences</h3>
-                <p>Modules de formation continue et spécialisée, en petits groupes personnalisés.</p>
-                <a href="/poles-expertise/formation-conferences">En savoir plus →</a>
-            </div>
-            <div class="card card--media">
-                <div class="card__media" style="background-image: url('/assets/img/poles/immigration-etudes-france.jpg')"></div>
-                <h3>Immigration &amp; Études en France</h3>
-                <p>Accompagnement complet de la procédure Campus France, du dossier au visa étudiant.</p>
-                <a href="/poles-expertise/immigration-etudes-france">En savoir plus →</a>
-            </div>
+            <?php foreach ($poleCards as [$slug, $k]): ?>
+                <div class="card card--media">
+                    <div class="card__media" style="background-image: url('/assets/img/poles/<?= $slug ?>.jpg')"></div>
+                    <h3><?= $e("$k.title") ?></h3>
+                    <p><?= $e("$k.text") ?></p>
+                    <a href="<?= lurl("/poles-expertise/$slug") ?>"><?= $e('home.more') ?></a>
+                </div>
+            <?php endforeach; ?>
         </div>
     </div>
 </section>
@@ -74,31 +64,18 @@
 <section class="alt">
     <div class="container">
         <div class="section-heading">
-            <span class="section-heading__eyebrow">Pourquoi ADETIS</span>
-            <h2>Un partenaire qui simplifie vos projets, pas qui les complique</h2>
-            <p>Nous combinons expertise technique, réseau international et accompagnement humain pour transformer vos idées en résultats concrets.</p>
+            <span class="section-heading__eyebrow"><?= $e('home.why.eyebrow') ?></span>
+            <h2><?= $e('home.why.title') ?></h2>
+            <p><?= $e('home.why.text') ?></p>
         </div>
         <div class="grid grid-4">
-            <div class="feature-card">
-                <span class="feature-card__icon">🎯</span>
-                <h3>Une expertise intégrée</h3>
-                <p>Cinq pôles complémentaires sous un même toit : plus besoin de multiplier les prestataires.</p>
-            </div>
-            <div class="feature-card">
-                <span class="feature-card__icon">🌍</span>
-                <h3>Un pont Afrique–Europe</h3>
-                <p>Siège à Douala, filiale à Paris : une passerelle opérationnelle entre vos marchés locaux et internationaux.</p>
-            </div>
-            <div class="feature-card">
-                <span class="feature-card__icon">⚡</span>
-                <h3>Un interlocuteur unique</h3>
-                <p>De la première prise de contact jusqu'à la livraison, un seul point de contact qui connaît votre dossier.</p>
-            </div>
-            <div class="feature-card">
-                <span class="feature-card__icon">🤝</span>
-                <h3>Un réseau qui fait la différence</h3>
-                <p>Partenaires industriels, académiques et institutionnels en zone CEMAC et à l'international.</p>
-            </div>
+            <?php foreach ($whyCards as [$icon, $k]): ?>
+                <div class="feature-card">
+                    <span class="feature-card__icon"><?= $icon ?></span>
+                    <h3><?= $e("home.why.$k.title") ?></h3>
+                    <p><?= $e("home.why.$k.text") ?></p>
+                </div>
+            <?php endforeach; ?>
         </div>
     </div>
 </section>
@@ -108,12 +85,12 @@
         <div class="split__media" style="background-image: url('/assets/img/partnership-handshake.jpg')"></div>
         <div class="split__body">
             <div class="section-heading">
-                <span class="section-heading__eyebrow">Rayonnement</span>
-                <h2>Des partenariats en Afrique Centrale et à l'international</h2>
-                <p>ADETIS coordonne son action entre son siège social de Douala et sa filiale de Paris, avec des partenariats techniques et académiques en zone CEMAC, en Europe et en Russie.</p>
+                <span class="section-heading__eyebrow"><?= $e('home.reach.eyebrow') ?></span>
+                <h2><?= $e('home.reach.title') ?></h2>
+                <p><?= $e('home.reach.text') ?></p>
             </div>
             <div class="hero__actions">
-                <a class="btn btn-solid" href="/partenaires">Voir nos partenaires &amp; marchés</a>
+                <a class="btn btn-solid" href="<?= lurl('/partenaires') ?>"><?= $e('home.reach.cta') ?></a>
             </div>
         </div>
     </div>
@@ -122,9 +99,9 @@
 <section class="cta-banner">
     <div class="container cta-banner__inner">
         <div>
-            <h2>Un projet en tête ? Parlons-en.</h2>
-            <p>Étude technique, achat d'équipement, formation ou dossier Campus France : notre équipe vous répond sous 48h pour évaluer votre besoin.</p>
+            <h2><?= $e('home.cta.title') ?></h2>
+            <p><?= $e('home.cta.text') ?></p>
         </div>
-        <a class="btn btn-primary" href="/contact">Nous contacter</a>
+        <a class="btn btn-primary" href="<?= lurl('/contact') ?>"><?= $e('home.cta.button') ?></a>
     </div>
 </section>

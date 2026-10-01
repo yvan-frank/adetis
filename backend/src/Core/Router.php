@@ -54,6 +54,7 @@ class Router
     public function dispatch(Request $request): void
     {
         $this->redirectTrailingSlash($request);
+        $this->redirectToLocalizedPath($request);
 
         foreach ($this->routes as $route) {
             if ($route['method'] !== $request->method) {
@@ -84,12 +85,27 @@ class Router
             return;
         }
 
-        $path = $request->path;
+        $path = $request->rawPath;
 
         if ($path !== '/' && str_ends_with($path, '/')) {
             $target = rtrim($path, '/');
             $query = $request->query ? '?' . http_build_query($request->query) : '';
             Response::redirect($target . $query, 301);
+        }
+    }
+
+    /** /en/a-propos (slug français sous préfixe anglais) -> /en/about, en 301. */
+    private function redirectToLocalizedPath(Request $request): void
+    {
+        if ($request->method !== 'GET') {
+            return;
+        }
+
+        $canonical = Lang::canonicalPath($request->rawPath);
+
+        if ($canonical !== null) {
+            $query = $request->query ? '?' . http_build_query($request->query) : '';
+            Response::redirect($canonical . $query, 301);
         }
     }
 

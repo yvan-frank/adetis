@@ -1,32 +1,39 @@
 <?php
+use App\Core\Lang;
+
 /** @var string|null $activeNav */
 $navItems = [
-    'home' => ['/', 'Accueil'],
-    'about' => ['/a-propos', 'À propos'],
-    'services' => ['/poles-expertise', "Nos pôles d'expertise"],
-    'partners' => ['/partenaires', 'Partenaires'],
-    'careers' => ['/engagement-social', 'Engagement social'],
-    'contact' => ['/contact', 'Contact'],
+    'home' => ['/', t('nav.home')],
+    'about' => ['/a-propos', t('nav.about')],
+    'services' => ['/poles-expertise', t('nav.services')],
+    'partners' => ['/partenaires', t('nav.partners')],
+    'careers' => ['/engagement-social', t('nav.careers')],
+    'contact' => ['/contact', t('nav.contact')],
 ];
 ?>
 <header class="site-header">
     <div class="site-header__bar container">
-        <a class="brand" href="/">
+        <a class="brand" href="<?= htmlspecialchars(lurl('/')) ?>">
             <img src="/assets/img/logo-adetis.png" alt="ADETIS Engineering">
             <span class="brand__name">ADETIS<small>Engineering</small></span>
         </a>
 
-        <button type="button" class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="main-nav" data-nav-toggle>
+        <button type="button" class="nav-toggle" aria-label="<?= htmlspecialchars(t('nav.open')) ?>" aria-expanded="false" aria-controls="main-nav" data-nav-toggle>
             <span class="nav-toggle__bar"></span>
             <span class="nav-toggle__bar"></span>
             <span class="nav-toggle__bar"></span>
         </button>
 
         <nav class="main-nav" id="main-nav" data-nav>
-            <button type="button" class="nav-close" aria-label="Fermer le menu" data-nav-close>&times;</button>
+            <button type="button" class="nav-close" aria-label="<?= htmlspecialchars(t('nav.close')) ?>" data-nav-close>&times;</button>
             <?php foreach ($navItems as $key => [$href, $label]): ?>
-                <a href="<?= htmlspecialchars($href) ?>"<?= ($activeNav ?? '') === $key ? ' class="is-active"' : '' ?>><?= htmlspecialchars($label) ?></a>
+                <a href="<?= htmlspecialchars(lurl($href)) ?>"<?= ($activeNav ?? '') === $key ? ' class="is-active"' : '' ?>><?= htmlspecialchars($label) ?></a>
             <?php endforeach; ?>
+            <span class="lang-switch" role="group" aria-label="<?= htmlspecialchars(t('nav.language')) ?>">
+                <?php foreach (array_keys(Lang::supported()) as $code): ?>
+                    <a href="<?= htmlspecialchars(Lang::url(Lang::barePath(), $code)) ?>" hreflang="<?= $code ?>" lang="<?= $code ?>"<?= $code === Lang::current() ? ' class="is-current" aria-current="true"' : '' ?>><?= strtoupper($code) ?></a>
+                <?php endforeach; ?>
+            </span>
         </nav>
     </div>
 </header>

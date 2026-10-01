@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
+use App\Core\Lang;
 use App\Core\Request;
 use App\Core\Seo;
 
@@ -56,15 +57,34 @@ class SeoController extends Controller
 
         echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
         echo '<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>' . "\n";
-        echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
+        echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">' . "\n";
 
         foreach ($urls as $url) {
-            echo "  <url>\n";
-            echo '    <loc>' . htmlspecialchars(Seo::absoluteUrl($url['path'])) . "</loc>\n";
-            echo '    <lastmod>' . self::CONTENT_LAST_REVIEWED . "</lastmod>\n";
-            echo '    <changefreq>' . $url['changefreq'] . "</changefreq>\n";
-            echo '    <priority>' . $url['priority'] . "</priority>\n";
-            echo "  </url>\n";
+            // Une entrée par langue, chacune référençant toutes les versions (hreflang).
+            $langs = array_keys(Lang::supported());
+
+            foreach ($langs as $code) {
+                echo "  <url>
+";
+                echo '    <loc>' . htmlspecialchars(Seo::absoluteUrl(Lang::url($url['path'], $code))) . "</loc>
+";
+
+                if (count($langs) > 1) {
+                    foreach ($langs as $alt) {
+                        echo '    <xhtml:link rel="alternate" hreflang="' . $alt . '" href="' . htmlspecialchars(Seo::absoluteUrl(Lang::url($url['path'], $alt))) . "\"/>
+";
+                    }
+                }
+
+                echo '    <lastmod>' . self::CONTENT_LAST_REVIEWED . "</lastmod>
+";
+                echo '    <changefreq>' . $url['changefreq'] . "</changefreq>
+";
+                echo '    <priority>' . $url['priority'] . "</priority>
+";
+                echo "  </url>
+";
+            }
         }
 
         echo '</urlset>';

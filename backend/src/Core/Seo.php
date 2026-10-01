@@ -32,13 +32,13 @@ class Seo
             '@type' => 'Organization',
             'name' => 'ADETIS Engineering',
             'alternateName' => "Applications des Développements des Techniques d'Ingénierie et Services Associés",
-            'url' => $base . '/',
+            'url' => self::absoluteUrl(Lang::url('/')),
             'logo' => $base . '/assets/img/logo-adetis.png',
             'email' => 'directeur.general@adetis-engineering.com',
             'department' => [
                 [
                     '@type' => 'LocalBusiness',
-                    'name' => 'ADETIS Engineering — Siège social',
+                    'name' => t('seo.org.hq'),
                     'address' => [
                         '@type' => 'PostalAddress',
                         'streetAddress' => 'BP 12067',
@@ -51,7 +51,7 @@ class Seo
                 ],
                 [
                     '@type' => 'LocalBusiness',
-                    'name' => 'ADETIS Engineering — Filiale France',
+                    'name' => t('seo.org.branch'),
                     'address' => [
                         '@type' => 'PostalAddress',
                         'streetAddress' => '3 rue de Tourtille',
@@ -82,7 +82,7 @@ class Seo
             ];
 
             if (!empty($item['path'])) {
-                $entry['item'] = self::absoluteUrl($item['path']);
+                $entry['item'] = self::absoluteUrl(Lang::url($item['path']));
             }
 
             $listItems[] = $entry;

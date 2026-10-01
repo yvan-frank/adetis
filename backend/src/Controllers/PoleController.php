@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
+use App\Core\Lang;
 use App\Core\Request;
 use App\Core\Seo;
 
@@ -24,6 +25,7 @@ class PoleController extends Controller
 
         $this->view('pole-detail', [
             'pageTitle' => ($pole['seoTitle'] ?? $pole['title']) . ' — ADETIS Engineering',
+            'translated' => true,
             'pageDescription' => $pole['metaDescription'],
             'activeNav' => 'services',
             'pole' => $pole,
@@ -31,8 +33,8 @@ class PoleController extends Controller
             'ogImage' => $pole['image'],
             'jsonLd' => [
                 Seo::breadcrumbJsonLd([
-                    ['name' => 'Accueil', 'path' => '/'],
-                    ['name' => "Nos pôles d'expertise", 'path' => '/poles-expertise'],
+                    ['name' => t('nav.home'), 'path' => '/'],
+                    ['name' => t('nav.services'), 'path' => '/poles-expertise'],
                     ['name' => $pole['shortTitle']],
                 ]),
                 [
@@ -40,13 +42,13 @@ class PoleController extends Controller
                     '@type' => 'Service',
                     'name' => $pole['title'],
                     'description' => $pole['metaDescription'],
-                    'url' => Seo::absoluteUrl('/poles-expertise/' . $pole['slug']),
+                    'url' => Seo::absoluteUrl(lurl('/poles-expertise/' . $pole['slug'])),
                     'provider' => [
                         '@type' => 'Organization',
                         'name' => 'ADETIS Engineering',
-                        'url' => Seo::baseUrl() . '/',
+                        'url' => Seo::absoluteUrl(lurl('/')),
                     ],
-                    'areaServed' => ['Cameroun', 'CEMAC', 'France'],
+                    'areaServed' => [t('seo.area_cameroon'), 'CEMAC', t('seo.area_france')],
                 ],
             ],
         ]);
@@ -222,6 +224,9 @@ class PoleController extends Controller
         foreach ($list as $pole) {
             $poles[$pole['slug']] = $pole;
         }
+
+        // Textes de la langue courante (lang/<code>/content/poles.php), par slug.
+        $poles = Lang::overlay($poles, 'poles');
 
         return $poles;
     }

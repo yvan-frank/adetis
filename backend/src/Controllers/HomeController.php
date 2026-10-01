@@ -11,8 +11,9 @@ class HomeController extends Controller
     public function index(Request $request): void
     {
         $this->view('home', [
-            'pageTitle' => 'ADETIS Engineering — Ingénierie, industrie & services associés',
-            'pageDescription' => "Cabinet d'études en ingénierie, recherche appliquée, équipements industriels et formation, présent à Douala (Cameroun) et à Paris (France).",
+            'pageTitle' => t('home.meta.title'),
+            'pageDescription' => t('home.meta.description'),
+            'translated' => true,
             'activeNav' => 'home',
             'ogImage' => '/assets/img/logo-adetis.png',
             'jsonLd' => [
@@ -20,7 +21,7 @@ class HomeController extends Controller
                     '@context' => 'https://schema.org',
                     '@type' => 'WebSite',
                     'name' => 'ADETIS Engineering',
-                    'url' => Seo::baseUrl() . '/',
+                    'url' => Seo::absoluteUrl(lurl('/')),
                 ],
             ],
         ]);

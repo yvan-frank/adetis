@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
+use App\Core\Lang;
 use App\Core\Request;
 use App\Core\Seo;
 use App\Core\Validator;
@@ -10,6 +11,7 @@ use App\Models\ImmigrationRequest;
 
 class ImmigrationRequestController extends Controller
 {
+    // Libellés français : valeurs enregistrées en base, quelle que soit la langue du visiteur.
     private const CURRENT_LEVELS = [
         'bac' => 'Baccalauréat',
         'bac2' => 'Bac+2',
@@ -61,28 +63,28 @@ class ImmigrationRequestController extends Controller
         $data = $request->body;
 
         $validator = (new Validator())
-            ->required($data, 'name', 'Le nom')
-            ->required($data, 'email', 'Email')
-            ->email($data, 'email', 'Email')
-            ->required($data, 'phone', 'Le téléphone')
-            ->required($data, 'country', 'Le pays de résidence')
-            ->required($data, 'current_level', 'Le niveau actuel')
-            ->required($data, 'current_field', 'La filière suivie')
-            ->required($data, 'target_level', 'Le niveau visé')
-            ->required($data, 'target_field', 'Le domaine souhaité')
-            ->required($data, 'intake', 'La rentrée visée')
-            ->required($data, 'stage', 'Votre étape actuelle')
-            ->required($data, 'message', 'Le message');
+            ->required($data, 'name', t('label.the_name'))
+            ->required($data, 'email', t('label.email'))
+            ->email($data, 'email', t('label.email'))
+            ->required($data, 'phone', t('label.the_phone'))
+            ->required($data, 'country', t('label.the_country'))
+            ->required($data, 'current_level', t('label.the_current_level'))
+            ->required($data, 'current_field', t('label.the_current_field'))
+            ->required($data, 'target_level', t('label.the_target_level'))
+            ->required($data, 'target_field', t('label.the_target_field'))
+            ->required($data, 'intake', t('label.the_intake'))
+            ->required($data, 'stage', t('label.the_stage'))
+            ->required($data, 'message', t('label.the_message'));
 
         $errors = $validator->errors();
 
-        $this->validateChoice($data, 'current_level', self::CURRENT_LEVELS, 'Le niveau actuel sélectionné est invalide.', $errors);
-        $this->validateChoice($data, 'target_level', self::TARGET_LEVELS, 'Le niveau visé sélectionné est invalide.', $errors);
-        $this->validateChoice($data, 'intake', self::INTAKES, 'La rentrée sélectionnée est invalide.', $errors);
-        $this->validateChoice($data, 'stage', self::STAGES, "L'étape sélectionnée est invalide.", $errors);
+        $this->validateChoice($data, 'current_level', self::CURRENT_LEVELS, t('immigration.error.current_level'), $errors);
+        $this->validateChoice($data, 'target_level', self::TARGET_LEVELS, t('immigration.error.target_level'), $errors);
+        $this->validateChoice($data, 'intake', self::INTAKES, t('immigration.error.intake'), $errors);
+        $this->validateChoice($data, 'stage', self::STAGES, t('immigration.error.stage'), $errors);
 
         if (empty($data['consent'])) {
-            $errors['consent'] = 'Merci de donner votre accord pour le traitement de vos données.';
+            $errors['consent'] = t('immigration.error.consent');
         }
 
         if (count($errors) > 0) {
@@ -135,20 +137,21 @@ class ImmigrationRequestController extends Controller
     private function viewData(array $extra): array
     {
         return array_merge([
-            'pageTitle' => 'Candidater — Immigration & Études en France — ADETIS Engineering',
-            'pageDescription' => "Formulaire de candidature pour un accompagnement Campus France : orientation, dossier, entretien, visa étudiant et installation en France.",
+            'pageTitle' => t('immigration.meta.title'),
+            'pageDescription' => t('immigration.meta.description'),
+            'translated' => true,
             'activeNav' => 'services',
-            'currentLevels' => self::CURRENT_LEVELS,
-            'targetLevels' => self::TARGET_LEVELS,
-            'intakes' => self::INTAKES,
-            'stages' => self::STAGES,
+            'currentLevels' => Lang::choices('immigration.current_level', self::CURRENT_LEVELS),
+            'targetLevels' => Lang::choices('immigration.target_level', self::TARGET_LEVELS),
+            'intakes' => Lang::choices('immigration.intake', self::INTAKES),
+            'stages' => Lang::choices('immigration.stage', self::STAGES),
             'ogImage' => '/assets/img/poles/immigration-etudes-france.jpg',
             'jsonLd' => [
                 Seo::breadcrumbJsonLd([
-                    ['name' => 'Accueil', 'path' => '/'],
-                    ['name' => "Nos pôles d'expertise", 'path' => '/poles-expertise'],
-                    ['name' => 'Immigration & Études en France', 'path' => '/poles-expertise/immigration-etudes-france'],
-                    ['name' => 'Candidater'],
+                    ['name' => t('nav.home'), 'path' => '/'],
+                    ['name' => t('nav.services'), 'path' => '/poles-expertise'],
+                    ['name' => t('pole.immigration_name'), 'path' => '/poles-expertise/immigration-etudes-france'],
+                    ['name' => t('immigration.breadcrumb')],
                 ]),
             ],
         ], $extra);

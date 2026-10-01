@@ -6,8 +6,8 @@
 ?>
 <section class="page-hero">
     <div class="container">
-        <h1>Contactez-nous</h1>
-        <p>Une question sur nos études CAO, un projet d'achat de machines, une demande de formation ou de partenariat : écrivez-nous.</p>
+        <h1><?= te('contact.title') ?></h1>
+        <p><?= te('contact.lead') ?></p>
     </div>
 </section>
 
@@ -16,13 +16,13 @@
         <div class="grid grid-2">
             <div>
                 <?php if ($sent): ?>
-                    <div class="alert alert-success">Votre message a bien été envoyé. Notre équipe reviendra vers vous rapidement.</div>
+                    <div class="alert alert-success"><?= te('contact.sent') ?></div>
                 <?php endif; ?>
 
-                <form method="post" action="/contact" novalidate>
+                <form method="post" action="<?= htmlspecialchars(lurl('/contact')) ?>" novalidate>
                     <div class="form-grid">
                         <div class="field">
-                            <label for="name">Nom complet</label>
+                            <label for="name"><?= te('form.full_name') ?></label>
                             <input type="text" id="name" name="name" value="<?= htmlspecialchars((string) ($old['name'] ?? '')) ?>" required>
                             <?php if (!empty($errors['name'])): ?><p class="field-error"><?= htmlspecialchars($errors['name']) ?></p><?php endif; ?>
                         </div>
@@ -32,13 +32,13 @@
                             <?php if (!empty($errors['email'])): ?><p class="field-error"><?= htmlspecialchars($errors['email']) ?></p><?php endif; ?>
                         </div>
                         <div class="field">
-                            <label for="phone">Téléphone (optionnel)</label>
+                            <label for="phone"><?= te('contact.phone_optional') ?></label>
                             <input type="tel" id="phone" name="phone" value="<?= htmlspecialchars((string) ($old['phone'] ?? '')) ?>">
                         </div>
                         <div class="field">
-                            <label for="subject">Objet de la demande</label>
+                            <label for="subject"><?= te('contact.subject') ?></label>
                             <select id="subject" name="subject" required>
-                                <option value="">— Sélectionner —</option>
+                                <option value=""><?= te('form.select') ?></option>
                                 <?php foreach ($subjects as $key => $label): ?>
                                     <option value="<?= htmlspecialchars($key) ?>"<?= (string) ($old['subject'] ?? '') === $key ? ' selected' : '' ?>><?= htmlspecialchars($label) ?></option>
                                 <?php endforeach; ?>
@@ -51,37 +51,14 @@
                             <?php if (!empty($errors['message'])): ?><p class="field-error"><?= htmlspecialchars($errors['message']) ?></p><?php endif; ?>
                         </div>
                         <div class="field field-full">
-                            <button type="submit" class="btn btn-accent">Envoyer le message</button>
+                            <button type="submit" class="btn btn-accent"><?= te('contact.submit') ?></button>
                         </div>
                     </div>
                 </form>
             </div>
 
             <div class="grid" style="gap:24px">
-                <div class="office-card">
-                    <h3>Siège social — Douala, Cameroun</h3>
-                    <dl>
-                        <dt>Adresse</dt>
-                        <dd>BP 12067, Douala — Cameroun</dd>
-                        <dt>Téléphone</dt>
-                        <dd>+237 620 22 48 11</dd>
-                        <dt>Fax</dt>
-                        <dd>+237 6 98 58 55 06</dd>
-                        <dt>Email</dt>
-                        <dd><a href="mailto:directeur.general@adetis-engineering.com">directeur.general@adetis-engineering.com</a></dd>
-                    </dl>
-                </div>
-                <div class="office-card">
-                    <h3>Filiale — Paris, France</h3>
-                    <dl>
-                        <dt>Adresse</dt>
-                        <dd>3 rue de Tourtille, 75020 Paris</dd>
-                        <dt>Téléphone</dt>
-                        <dd>+33 6 17 92 12 19</dd>
-                        <dt>Email</dt>
-                        <dd><a href="mailto:dtakendo@yahoo.fr">dtakendo@yahoo.fr</a></dd>
-                    </dl>
-                </div>
+                <?php require __DIR__ . '/partials/offices.php'; ?>
             </div>
         </div>
     </div>

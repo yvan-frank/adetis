@@ -11,13 +11,14 @@ class PageController extends Controller
     public function about(Request $request): void
     {
         $this->view('about', [
-            'pageTitle' => 'À propos — ADETIS Engineering',
-            'pageDescription' => "ADETIS, cabinet d'ingénierie basé à Douala et à Paris : vision, implantations et équipe dirigeante.",
+            'pageTitle' => t('about.meta.title'),
+            'pageDescription' => t('about.meta.description'),
+            'translated' => true,
             'activeNav' => 'about',
             'jsonLd' => [
                 Seo::breadcrumbJsonLd([
-                    ['name' => 'Accueil', 'path' => '/'],
-                    ['name' => 'À propos'],
+                    ['name' => t('nav.home'), 'path' => '/'],
+                    ['name' => t('nav.about')],
                 ]),
             ],
         ]);
@@ -26,14 +27,15 @@ class PageController extends Controller
     public function services(Request $request): void
     {
         $this->view('services', [
-            'pageTitle' => "Nos pôles d'expertise — ADETIS Engineering",
-            'pageDescription' => "Bureau d'études CAO/DAO, recherche appliquée, Boostmarket, formation et immigration/études en France : les cinq pôles d'expertise d'ADETIS.",
+            'pageTitle' => t('services.meta.title'),
+            'pageDescription' => t('services.meta.description'),
+            'translated' => true,
             'activeNav' => 'services',
             'poles' => array_values(PoleController::all()),
             'jsonLd' => [
                 Seo::breadcrumbJsonLd([
-                    ['name' => 'Accueil', 'path' => '/'],
-                    ['name' => "Nos pôles d'expertise"],
+                    ['name' => t('nav.home'), 'path' => '/'],
+                    ['name' => t('nav.services')],
                 ]),
             ],
         ]);
@@ -42,14 +44,15 @@ class PageController extends Controller
     public function partners(Request $request): void
     {
         $this->view('partners', [
-            'pageTitle' => 'Partenaires & Marchés — ADETIS Engineering',
-            'pageDescription' => "Zones d'intervention et partenaires d'ADETIS en Afrique Centrale, en Europe et au-delà.",
+            'pageTitle' => t('partners.meta.title'),
+            'pageDescription' => t('partners.meta.description'),
+            'translated' => true,
             'activeNav' => 'partners',
             'ogImage' => '/assets/img/partnership-handshake.jpg',
             'jsonLd' => [
                 Seo::breadcrumbJsonLd([
-                    ['name' => 'Accueil', 'path' => '/'],
-                    ['name' => 'Partenaires & Marchés'],
+                    ['name' => t('nav.home'), 'path' => '/'],
+                    ['name' => t('partners.breadcrumb')],
                 ]),
             ],
         ]);
@@ -58,13 +61,14 @@ class PageController extends Controller
     public function careers(Request $request): void
     {
         $this->view('careers', [
-            'pageTitle' => 'Engagement social — ADETIS Engineering',
-            'pageDescription' => "L'engagement social d'ADETIS pour la formation et la réinsertion professionnelle de la jeunesse.",
+            'pageTitle' => t('careers.meta.title'),
+            'pageDescription' => t('careers.meta.description'),
+            'translated' => true,
             'activeNav' => 'careers',
             'jsonLd' => [
                 Seo::breadcrumbJsonLd([
-                    ['name' => 'Accueil', 'path' => '/'],
-                    ['name' => 'Engagement social'],
+                    ['name' => t('nav.home'), 'path' => '/'],
+                    ['name' => t('nav.careers')],
                 ]),
             ],
         ]);

@@ -127,6 +127,26 @@ a:hover {
     color: var(--color-navy);
 }
 
+.main-nav .lang-switch {
+    display: inline-flex;
+    gap: 2px;
+    margin-left: 8px;
+    padding-left: 12px;
+    border-left: 1px solid var(--color-gray-300);
+}
+
+.main-nav .lang-switch a {
+    padding: 6px 9px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+.main-nav .lang-switch a.is-current {
+    background: var(--color-navy);
+    color: var(--color-white);
+}
+
 .main-nav a.is-active::after {
     content: "";
     position: absolute;
@@ -1190,6 +1210,13 @@ section.alt {
 
     .main-nav.is-open {
         transform: translateX(0);
+    }
+
+    .main-nav .lang-switch {
+        margin: 12px 0 0;
+        padding: 12px 0 0;
+        border-left: 0;
+        border-top: 1px solid var(--color-gray-300);
     }
 
     .main-nav a {
