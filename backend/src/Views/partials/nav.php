@@ -29,17 +29,46 @@ $navItems = [
             <?php foreach ($navItems as $key => [$href, $label]): ?>
                 <a href="<?= htmlspecialchars(lurl($href)) ?>"<?= ($activeNav ?? '') === $key ? ' class="is-active"' : '' ?>><?= htmlspecialchars($label) ?></a>
             <?php endforeach; ?>
-            <span class="lang-switch" role="group" aria-label="<?= htmlspecialchars(t('nav.language')) ?>">
-                <?php foreach (array_keys(Lang::supported()) as $code): ?>
-                    <a href="<?= htmlspecialchars(Lang::url(Lang::barePath(), $code)) ?>" hreflang="<?= $code ?>" lang="<?= $code ?>"<?= $code === Lang::current() ? ' class="is-current" aria-current="true"' : '' ?>><?= strtoupper($code) ?></a>
-                <?php endforeach; ?>
-            </span>
+            <?php
+            $langNames = ['fr' => 'Français', 'en' => 'English'];
+            $langFlags = ['fr' => 'fr', 'en' => 'gb'];
+            $currentLang = Lang::current();
+            ?>
+            <details class="lang-select" data-lang-select>
+                <summary aria-label="<?= htmlspecialchars(t('nav.language')) ?>">
+                    <img src="/assets/img/flags/<?= $langFlags[$currentLang] ?>.svg" alt="" width="22" height="16">
+                    <span><?= htmlspecialchars($langNames[$currentLang]) ?></span>
+                </summary>
+                <ul class="lang-select__menu">
+                    <?php foreach (array_keys(Lang::supported()) as $code): ?>
+                        <li>
+                            <a href="<?= htmlspecialchars(Lang::url(Lang::barePath(), $code)) ?>" hreflang="<?= $code ?>" lang="<?= $code ?>"<?= $code === $currentLang ? ' class="is-current" aria-current="true"' : '' ?>>
+                                <img src="/assets/img/flags/<?= $langFlags[$code] ?>.svg" alt="" width="22" height="16">
+                                <span><?= htmlspecialchars($langNames[$code]) ?></span>
+                            </a>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            </details>
         </nav>
     </div>
 </header>
 <div class="nav-backdrop" data-nav-backdrop hidden></div>
 <script>
     (function () {
+        // Menu de langue personnalisé (<details>) : fermeture au clic extérieur et à Échap.
+        document.querySelectorAll('[data-lang-select]').forEach(function (select) {
+            document.addEventListener('click', function (e) {
+                if (!select.contains(e.target)) select.removeAttribute('open');
+            });
+            select.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') {
+                    select.removeAttribute('open');
+                    select.querySelector('summary').focus();
+                }
+            });
+        });
+
         var toggle = document.querySelector('[data-nav-toggle]');
         var nav = document.querySelector('[data-nav]');
         var backdrop = document.querySelector('[data-nav-backdrop]');
