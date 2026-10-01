@@ -131,7 +131,7 @@ class PoleController extends Controller
                 'title' => "Boostmarket — Achat, Vente & Location d'Équipements",
                 'shortTitle' => "Boostmarket",
                 'seoTitle' => "Boostmarket — Équipements Industriels",
-                'lead' => "Notre plateforme d'approvisionnement en matériels et machines industrielles neufs et de seconde main, avec des services de location et de revente pour PME, grandes entreprises, BTP, secteur médical et universitaire.",
+                'lead' => "Notre plateforme d'approvisionnement en matériels et machines industrielles neufs et de seconde main, avec des services de location, de revente, d'achat de pièces de maintenance et de transfert de marchandises depuis Amazon pour PME, grandes entreprises, BTP, secteur médical et universitaire.",
                 'metaDescription' => "Boostmarket : achat, vente et location de matériels et machines industrielles neufs et d'occasion, pour PME, BTP, secteur médical et universitaire.",
                 'stats' => [
                     ['value' => 'Neuf', 'label' => '& seconde main'],
@@ -142,6 +142,8 @@ class PoleController extends Controller
                     ['icon' => '🛒', 'title' => "Achat d'équipements", 'desc' => "Sourcing de machines industrielles neuves et d'occasion, contrôlées."],
                     ['icon' => '💰', 'title' => 'Vente & revente', 'desc' => "Valorisation de vos équipements auprès de notre réseau d'acheteurs."],
                     ['icon' => '📦', 'title' => 'Location de matériel', 'desc' => "Solutions locatives flexibles pour vos chantiers et productions."],
+                    ['icon' => '🔧', 'title' => 'Pièces mécaniques & automobiles', 'desc' => "Achat de pièces mécaniques et automobiles pour assurer la maintenance de vos équipements et véhicules."],
+                    ['icon' => '🚚', 'title' => 'Transfert depuis Amazon', 'desc' => "Prise en charge du transfert de marchandises achetées sur la plateforme Amazon jusqu'à destination."],
                     ['icon' => '🏥', 'title' => 'Secteurs spécialisés', 'desc' => "Équipements dédiés au BTP, au médical et à l'universitaire."],
                 ],
                 'process' => [
